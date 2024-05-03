@@ -20,7 +20,7 @@ body{
 }
 
 .clock{
-    
+    width: 50%;
 }
 #myText{
     font-size: 50px;
