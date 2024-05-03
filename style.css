@@ -20,14 +20,22 @@ body{
 }
 
 .clock{
+    display: flex;
+    justify-content: center;
     width: 50%;
 }
 #myText{
+    margin-left: .4em;
     font-size: 50px;
     letter-spacing: .8em;
-    color: #ffffff42;
+    text-align: center;
+    color: #ffffff20;
+    /* max-width: 29ch;  */
+    word-wrap: break-word;
+
 }
 .highlight {
-   font-weight: bold;
+    transition: all 3s;
    color: #ffff; /* Customize highlight styles here (e.g., font-weight: bold; text-decoration: underline; color: yellow;) */
+   text-shadow: 0 0 5px rgba(243, 247, 250, 0.628);
   }
