@@ -1,11 +1,22 @@
 
+:root{
+    --dark-mode-bg: #000000;
+    --dark-mode-text: #ffffff20;
+    --dark-mode-highlight: #ffff;
+    --dark-mode-shadow: #f3f7faa0;
+    --light-mode-bg: #e7e8e8;
+    --light-mode-text: #c2c3c4;
+    --light-mode-highlight: #ffffff;
+    --light-mode-shadow: #f3f7fa;
+}
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body{
-    background-color: /*#f0f0f0*/ #000000;
+    background-color: var(--dark-mode-bg);
     font-family: Monospace, sans-serif;
     height: 100vh;
     width: 100vw;
@@ -29,13 +40,32 @@ body{
     font-size: 50px;
     letter-spacing: .8em;
     text-align: center;
-    color: #ffffff20;
+    color: var(--dark-mode-text);
     /* max-width: 29ch;  */
     word-wrap: break-word;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.262); */
 
 }
 .highlight {
     transition: all 3s;
-   color: #ffff; /* Customize highlight styles here (e.g., font-weight: bold; text-decoration: underline; color: yellow;) */
-   text-shadow: 0 0 5px rgba(243, 247, 250, 0.628);
+    color: var(--dark-mode-highlight); 
+    text-shadow: 0 0 5px var(--dark-mode-shadow);
+    /* -webkit-text-stroke-color: rgba(255, 255, 255, 0.078); */
+
   }
+
+  /*toggle mode button*/
+    /* .toggle-mode{
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        background-color: var(--light-mode-bg);
+        color: var(--light-mode-text);
+        border: none;
+        padding: .5em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .3s;
+    } */
+    
