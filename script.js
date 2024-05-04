@@ -5,7 +5,7 @@ setInterval(() => {
 
     // Convert to 12-hour format and add meridiem indicator (AM/PM)
     hours = hours % 12 || 12; // Convert from 24-hour to 12-hour format (12 for midnight/noon)
-    console.log(`${hours}:${now.getMinutes()} `);
+    //console.log(`${hours}:${now.getMinutes()} `);
 
 
     const textElementId = "myText";
@@ -48,20 +48,19 @@ getTime = () => {
   ];
  
   const roundedMinute = Math.floor(minutes / 5) * 5; // Round to nearest 5-minute increment
-  if (minutes === 0 && minutes < 5) {
+  if (minutes === 0 || minutes < 5) {
     return [hourToString(hours), minuteStrings[0]];
   }else if (minutes < 30) {
     return [minuteStrings[roundedMinute / 5], "past", hourToString(hours)];
   }else if(minutes >= 30 && minutes < 35) {
     return ["half", "past", hourToString(hours)];
   }else {
-    return [minuteStrings[roundedMinute / 5],"to", hourToString(hours + 1)];
+    return [minuteStrings[roundedMinute / 5],"to", hourToString(hours === 12 ? 1 : hours + 1)];
   }
 
   
 }
 
-  
 
 console.log(getTime())
 
@@ -92,18 +91,6 @@ highlightText = (elementId, searchTerms) => {
 
 
 
-// function countWords(arr) {
-//       const wordCount = {};
-    
-//       for (const word of arr) {
-//         if (wordCount[word]) {
-//           wordCount[word]++;
-//         } else {
-//           wordCount[word] = 1;
-//         }
-//       }
-    
-//       return wordCount;
-//   }
+
 
 
