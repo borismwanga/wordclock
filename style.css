@@ -1,4 +1,8 @@
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
     --dark-mode-bg: #000000;
     --dark-mode-text: #ffffff20;
@@ -18,34 +22,14 @@
 body{
     background-color: var(--dark-mode-bg);
     font-family: Monospace, sans-serif;
-    height: 100vh;
-    width: 100vw;
+    
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
 
-.clock{
-    display: flex;
-    justify-content: center;
-    width: 50%;
-}
 #myText{
-    margin-left: .4em;
     font-size: 50px;
-    letter-spacing: .8em;
+    letter-spacing: 0.5em;
     text-align: center;
-    color: var(--dark-mode-text);
-    /* max-width: 29ch;  */
-    word-wrap: break-word;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgba(0, 0, 0, 0.262); */
-
 }
 .highlight {
     transition: all 3s;
@@ -54,6 +38,7 @@ body{
     /* -webkit-text-stroke-color: rgba(255, 255, 255, 0.078); */
 
   }
+    
 
   /*toggle mode button*/
     /* .toggle-mode{
