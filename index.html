@@ -5,62 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Clock</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
 </head>
-<body>
-    <div class="container">
-        <div class="clock">
-            <p id="myText"> 
-                <!-- text test -->
-                <!-- helloevery<br>onethisisa<br>wonderfulF<br>ridayonthi<br>sworld!hello -->
-
-                <!-- ITLISAJXPSBENMO<br>
-                TWENTYFIVETTTEN<br>
-                QUARTERTHIRTYPQ<br>
-                EMINUTESOPASTOG<br>
-                TWONEIGHTENUUFK<br>
-                SEVENTHREESIXPO<br>
-                TWELVELEVENINET<br>
-                FOURFIVEYOCLOCK<br> -->
-                <!-- 15 * 9 -->
-                <!-- ITLISAJXPSBENMO<br>
-                TWENTYFIVETTTEN<br>
-                QUARTERGHALFXKM<br>
-                FIFTEENTHIRTYPQ<br>
-                EMINUTESOPASTOG<br>
-                TWONEIGHTENUUFK<br>
-                SEVENTHREESIXΡΟ<br>
-                TWELVELEVENINET<br>
-                FOURFIVEYOCLOCK -->
-                
-                <!-- 13 * 10 -->
-                <!-- ITAISKTWENTYU<br>
-                QUARTERGHALFA<br>
-                TENFIVENPASTG<br>
-                TOACTWELVEONE<br>
-                TWOTHREEFOURL<br>
-                BFIVESIXSEVEN<br>
-                EIGHTNINETENM<br>
-                RIEELEVENBQWH<br>
-                QO'CLOCKGNOWD<br> -->
-
-                <!-- PMAMBJOUYFDSB<br> -->
-
-                <!-- 11 * 10 -->
-                ITLISASAMPM<br>
-                ACQUARTERDC<br>
-                TWENTYFIVEX<br>
-                HALFSTENFTO<br>
-                PASTERUNINE<br>
-                ONESIXTHREE<br>
-                FOURFIVETWO<br>
-                EIGHTELEVEN<br>
-                SEVENTWELVE<br>
-                TENSEOCLOCK<br>
-            </p>
+<body class="w-screen h-screen flew justify-center items-center">
+    <div class="flex justify-center items-center h-screen w-screen">
+        <div class="flex justify-center w-6/12  ">
+            <span id="myText" class="pl-[0.5em] text-center text-zinc-800 break-words	"> 
+              ITLISASAMPM<br>ACQUARTERDC<br>TWENTYFIVEX<br>HALFSTENFTO<br>PASTERUNINE<br>ONESIXTHREE<br>FOURFIVETWO<br>EIGHTELEVEN<br>SEVENTWELVE<br>TENSEOCLOCK<br>
+            </span>
 
         </div>
         <!-- <button class="toggle-mode">Toggle Mode</button> -->
     </div>
-    <script src="script.js"></script>
+    <!-- <div class=" absolute w-screen h-screen top-0 ">
+      
+    </div> -->
+        <script type="module" src="script.js"></script>
+        <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
 </body>
 </html>
