@@ -1,3 +1,3 @@
-## Word Clock
+# Word Clock
 
-# En, Fr, Nl
+### En, Fr, Nl
