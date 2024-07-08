@@ -1,18 +1,18 @@
 // languages.js
 export const french = {
-    numbers: ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "midi"],
+    numbers: ["zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "midi"],
     oclock: "heures",
     past: "moins",
     to: "et",
-    half: "et demie",
+    half: "demie",
     minuteStrings: [
-        "heure",
+        "heures",
         "cinq",
         "dix",
         "quart",
         "vingt",
         "vingt-cinq",
-        "trente",
+        "demie",
         "vingt-cinq",
         "vingt",
         "quart",

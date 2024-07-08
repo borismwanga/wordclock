@@ -13,7 +13,6 @@
     <div class="flex justify-center items-center h-screen w-screen">
         <div class="flex justify-center w-6/12  ">
             <span id="myText" class="pl-[0.5em] text-center text-zinc-800 break-words	"> 
-              ITLISASAMPM<br>ACQUARTERDC<br>TWENTYFIVEX<br>HALFSTENFTO<br>PASTERUNINE<br>ONESIXTHREE<br>FOURFIVETWO<br>EIGHTELEVEN<br>SEVENTWELVE<br>TENSEOCLOCK<br>
             </span>
 
         </div>
@@ -25,6 +24,9 @@
         <script type="module" src="script.js"></script>
         <script>
         tailwind.config = {
+          plugins: [
+            require('daisyui'),
+          ],
           theme: {
             extend: {
               colors: {
