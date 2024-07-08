@@ -16,11 +16,24 @@
 
 body{
     background-color: var(--dark-mode-bg);
+    font-family: Monospace, sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
 
-
-
+.clock{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
 #myText{
     margin-left: .4em;
     font-size: 50px;
@@ -38,6 +51,7 @@ body{
     color: var(--dark-mode-highlight); 
     text-shadow: 0 0 5px var(--dark-mode-shadow);
     /* -webkit-text-stroke-color: rgba(255, 255, 255, 0.078); */
+
   }
 
   /*toggle mode button*/
@@ -53,4 +67,3 @@ body{
         cursor: pointer;
         transition: all .3s;
     } */
-    
