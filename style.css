@@ -36,13 +36,13 @@ body{
     width: 50%;
 }
 #myText{
-    margin-left: .4em;
+    margin-left: 35px;
     font-size: 50px;
     letter-spacing: .8em;
     text-align: center;
     color: var(--dark-mode-text);
     /* max-width: 29ch;  */
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     /* -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgba(0, 0, 0, 0.262); */
 
@@ -54,6 +54,35 @@ body{
     /* -webkit-text-stroke-color: rgba(255, 255, 255, 0.078); */
 
   }
+
+/*/corner*/
+
+.box {
+  --b: 5px;   /* thickness of the border */
+  --c: red;   /* color of the border */
+  --w: 20px;  /* width of border */
+  
+
+  border: var(--b) solid #0000; /* space for the border */
+  --_g: #0000 90deg,var(--c) 0;
+  --_p: var(--w) var(--w) border-box no-repeat;
+  background:
+    conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
+    conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p);
+  
+  /*Irrelevant code*/  
+  /* width:200px;
+  height:100px;
+  box-sizing:border-box;
+  margin:5px;
+  display:inline-flex;
+  font-size:30px;
+  justify-content:center;
+  align-items:center;
+  text-align:center; */
+}
 
   /*toggle mode button*/
     /* .toggle-mode{

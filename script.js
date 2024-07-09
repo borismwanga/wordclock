@@ -1,6 +1,6 @@
 import { english, french } from './languages.js';
 
-const lang = french;
+const lang = english;
 const past = lang.past;
 const to = lang.to;
 const myText = lang.myText;
