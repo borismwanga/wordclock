@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root{
     --dark-mode-bg: #000000;
@@ -19,7 +16,7 @@
 }
 
 body{
-    @apply bg-dark-mode-bg text-dark-mode-text;
+    background: var(--dark-mode-bg);
     font-family: Monospace, sans-serif;
     height: 100vh;
     width: 100vw;

@@ -3,7 +3,6 @@ import { english, french } from './languages.js';
 const lang = french;
 const past = lang.past;
 const to = lang.to;
-const half = lang.half;
 const myText = lang.myText;
 
 document.getElementById("myText").innerHTML = myText;
@@ -20,7 +19,6 @@ setInterval(() => {
   searchTerms.push(...getTime()); // Add current time terms
 
   highlightOrderedTerms(textElementId, searchTerms);
-  console.log(getTime())
 }, 1000);
 
 const hourToString = hour => {
@@ -101,4 +99,9 @@ function highlightOrderedTerms(elementId, terms) {
 
   // Update the element's content with the highlighted terms
   element.innerHTML = content;
+}
+
+const lightModePreference = localStorage.getItem('lightMode');
+if (!lightModePreference) {
+  localStorage.setItem('lightMode', 'dark');
 }
