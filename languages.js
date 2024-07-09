@@ -51,23 +51,23 @@ export const english = {
 export const dutch = {
     numbers: ["nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "elf", "twaalf"],
     oclock: "uur",
-    past: "over",
-    to: "voor",
+    past: "voor",
+    to: "over",
     half: "half",
     minuteStrings: [
-        "Ok",
+        "uur",
         "vijf",
         "tien",
-        "kwartaal",
+        "kwart",
         "twintig",
         "vijfentwintig",
         "half",
         "vijfentwintig",
         "twintig",
-        "kwartaal",
+        "kwart",
         "tien",
         "vijf"
     ],
     searchTerms: ["het", "is"],
-    myText:"HETKISAVIJF<br>ΤΙΕΝΑTZVOOR<br>OVERMEKWART<br>HALFSPMOVER<br>VOORTHGEENS<br>TWEEAMCDRIE<br>VIERVIJFZES<br>ZEVENONEGEN<br>ACHTTIENELF<br>TWAALFPMUUR"
+    myText:"HETXISAMPMO<br>VIJFTOVEREN<br>KWARTVIERDE<br>DRIEHALFTWA<br>TIENRACHTVO<br>ORVZEVENDWI<br>TWAALFAMRUR<br>PMTJNUURVEE<br>VOREENVIJFR<br>MINFUURNEGE<br>"
 };
