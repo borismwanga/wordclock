@@ -1,6 +1,6 @@
-import { english, french } from './languages.js';
+import { english, french, dutch } from './languages.js';
 
-const lang = english;
+const lang = french;
 const past = lang.past;
 const to = lang.to;
 const myText = lang.myText;
@@ -34,21 +34,24 @@ const hourToString = hour => {
 const getTime = () => {
   const now = new Date();
   let hours = now.getHours();
-  //let hours = 5;
+  //let hours = 8;
   hours = hours % 12 || 12;
   const minutes = now.getMinutes();
-  //const minutes = 15;
+  //const minutes = 10;
 
   const minuteStrings = lang.minuteStrings;
 
   const roundedMinute = Math.floor(minutes / 5) * 5; // Round to nearest 5-minute increment
   if (minutes === 0 || minutes < 5) {
+    if (lang === dutch) {
+      return [hourToString(hours), "uur"];
+    }
     return [hourToString(hours), minuteStrings[0]];
   } else if (minutes < 30) {
     if (lang === french) {
       return minuteStrings[roundedMinute / 5] === "quart" ? [hourToString(hours), "heures", to, minuteStrings[roundedMinute / 5]] : [hourToString(hours), "heures", minuteStrings[roundedMinute / 5]];
     } else {
-      return [minuteStrings[roundedMinute / 5], past, hourToString(hours)];
+      return [minuteStrings[roundedMinute / 5], to, hourToString(hours)];
     }
   } else if (minutes >= 30 && minutes < 35) {
     return lang === french ? [hourToString(hours === 12 ? 1 : hours), "heures", "et", minuteStrings[roundedMinute / 5]] : [minuteStrings[roundedMinute / 5], to, hourToString(hours)];

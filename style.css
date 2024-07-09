@@ -36,8 +36,8 @@ body{
     width: 50%;
 }
 #myText{
-    margin-left: 35px;
-    font-size: 50px;
+    margin-left: 1.823vw;
+    font-size: 2.604vw;
     letter-spacing: .8em;
     text-align: center;
     color: var(--dark-mode-text);
@@ -97,3 +97,14 @@ body{
         cursor: pointer;
         transition: all .3s;
     } */
+    @media screen and (max-width: 768px) {
+        #myText{
+            margin-left: 15px;
+            font-size: 20px;
+        }
+        .box{
+            --b: 2px;   /* thickness of the border */
+            --w: 10px;  /* width of border */
+            width: 100%;
+        }
+      }
