@@ -1,6 +1,6 @@
 import { english, french, dutch } from './languages.js';
 
-const lang = french;
+const lang = english;
 const past = lang.past;
 const to = lang.to;
 const myText = lang.myText;
@@ -34,39 +34,49 @@ const hourToString = hour => {
 const getTime = () => {
   const now = new Date();
   let hours = now.getHours();
-  //let hours = 8;
+  //let hours = 11;
   hours = hours % 12 || 12;
   const minutes = now.getMinutes();
-  //const minutes = 10;
+  //const minutes = 55;
 
   const minuteStrings = lang.minuteStrings;
 
   const roundedMinute = Math.floor(minutes / 5) * 5; // Round to nearest 5-minute increment
+  const midiMiniut = () => {
+    if (hours === 12 ){
+      return "midi";
+      }else if (hours === 1) {
+        return "heure";
+      }
+      return "heures";
+  }
   if (minutes === 0 || minutes < 5) {
     if (lang === dutch) {
       return [hourToString(hours), "uur"];
+    } else if (lang === french) {
+      return [hourToString(hours), midiMiniut()];
     }
     return [hourToString(hours), minuteStrings[0]];
   } else if (minutes < 30) {
     if (lang === french) {
-      return minuteStrings[roundedMinute / 5] === "quart" ? [hourToString(hours), "heures", to, minuteStrings[roundedMinute / 5]] : [hourToString(hours), "heures", minuteStrings[roundedMinute / 5]];
-    } else {
-      return [minuteStrings[roundedMinute / 5], to, hourToString(hours)];
-    }
-  } else if (minutes >= 30 && minutes < 35) {
-    return lang === french ? [hourToString(hours === 12 ? 1 : hours), "heures", "et", minuteStrings[roundedMinute / 5]] : [minuteStrings[roundedMinute / 5], to, hourToString(hours)];
-  } else {
-    if (lang === french) {
-      return minuteStrings[roundedMinute / 5] === "quart" ? [hourToString(hours === 12 ? 1 : hours), "heures", past, "le", minuteStrings[roundedMinute / 5]] : [hourToString(hours === 12 ? 1 : hours), "heures", past, minuteStrings[roundedMinute / 5]];
+      return minuteStrings[roundedMinute / 5] === "quart" ? [hourToString(hours), midiMiniut(), to, minuteStrings[roundedMinute / 5]] : [hourToString(hours), midiMiniut(), minuteStrings[roundedMinute / 5]];
     } else {
       return [minuteStrings[roundedMinute / 5], past, hourToString(hours)];
+    }
+  } else if (minutes >= 30 && minutes < 35) {
+    return lang === french ? [hourToString(hours), midiMiniut(), "et", minuteStrings[roundedMinute / 5]] : [minuteStrings[roundedMinute / 5], to, hourToString(hours)];
+  } else {
+    if (lang === french) {
+      return minuteStrings[roundedMinute / 5] === "quart" ? [hourToString(hours === 12 ? 1 : hours), midiMiniut(), past, "le", minuteStrings[roundedMinute / 5]] : [hourToString(hours === 12 ? 1 : hours), "heures", past, minuteStrings[roundedMinute / 5]];
+    } else {
+      return [minuteStrings[roundedMinute / 5], to, hourToString(hours === 12 ? 1 : hours + 1)];
     }
   }
 }
 
 console.log(getTime())
 
-function highlightOrderedTerms(elementId, terms) {
+const highlightOrderedTerms = (elementId, terms) => {
   const element = document.getElementById(elementId);
   if (!element) return; // Element not found
 
@@ -74,13 +84,12 @@ function highlightOrderedTerms(elementId, terms) {
   let content = element.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
 
   let lastPosition = 0; // Track the position after the last highlighted term
-  let foundTerms = {}; // Object to keep track of found terms
 
   terms.forEach(term => {
-    if (foundTerms[term]) return; // Skip if the term has already been highlighted
-
     const searchTerm = term.toLowerCase();
-    const startPosition = content.toLowerCase().indexOf(searchTerm, lastPosition);
+
+    // Find the next occurrence of the term after the lastPosition
+    let startPosition = content.toLowerCase().indexOf(searchTerm, lastPosition);
 
     if (startPosition !== -1) {
       // Calculate the end position of the found term
@@ -91,12 +100,9 @@ function highlightOrderedTerms(elementId, terms) {
         `<span class="highlight">${content.substring(startPosition, endPosition)}</span>` +
         content.substring(endPosition);
 
-      // Mark the term as found
-      foundTerms[term] = true;
-
       // Update lastPosition to search for the next term after the current highlighted one
       // Adjusting for the added length of the highlight span tags
-      lastPosition = startPosition + `<span class="highlight">`.length + searchTerm.length + `</span>`.length - searchTerm.length;
+      lastPosition = endPosition + `<span class="highlight">`.length + `</span>`.length;
     }
   });
 
@@ -104,7 +110,4 @@ function highlightOrderedTerms(elementId, terms) {
   element.innerHTML = content;
 }
 
-const lightModePreference = localStorage.getItem('lightMode');
-if (!lightModePreference) {
-  localStorage.setItem('lightMode', 'dark');
-}
+
