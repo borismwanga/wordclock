@@ -110,4 +110,58 @@ const highlightOrderedTerms = (elementId, terms) => {
   element.innerHTML = content;
 }
 
+/* Theme toggling */
+const rootElement = document.documentElement;
+const toggleButton = document.querySelector('.toggle-mode');
+const THEME_STORAGE_KEY = 'wordclock-theme';
+
+const applyTheme = theme => {
+  const nextTheme = theme === 'light' ? 'light' : 'dark';
+  rootElement.setAttribute('data-theme', nextTheme);
+  if (toggleButton) {
+    const prefersLight = nextTheme === 'light';
+    toggleButton.textContent = prefersLight ? 'Dark mode' : 'Light mode';
+    toggleButton.setAttribute('aria-pressed', prefersLight.toString());
+  }
+};
+
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+applyTheme(savedTheme ?? rootElement.getAttribute('data-theme') ?? 'dark');
+
+toggleButton?.addEventListener('click', () => {
+  const currentTheme = rootElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+  applyTheme(nextTheme);
+  localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+});
+
+/* Reveal the toggle button when the user moves the cursor (or touches the screen) */
+let toggleVisibilityTimeout;
+const revealToggle = () => {
+  if (!toggleButton) return;
+  document.body.classList.add('show-toggle');
+  clearTimeout(toggleVisibilityTimeout);
+  toggleVisibilityTimeout = setTimeout(() => {
+    document.body.classList.remove('show-toggle');
+  }, 2000);
+};
+
+['mousemove', 'touchstart', 'touchmove'].forEach(eventName => {
+  document.addEventListener(eventName, revealToggle, { passive: true });
+});
+
+const keepToggleVisible = () => {
+  if (!toggleButton) return;
+  document.body.classList.add('show-toggle');
+  clearTimeout(toggleVisibilityTimeout);
+};
+
+toggleButton?.addEventListener('mouseenter', keepToggleVisible);
+toggleButton?.addEventListener('mouseleave', revealToggle);
+
+toggleButton?.addEventListener('focus', () => document.body.classList.add('show-toggle'));
+toggleButton?.addEventListener('blur', () => document.body.classList.remove('show-toggle'));
+
+revealToggle();
+
 
