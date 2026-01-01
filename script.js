@@ -136,6 +136,7 @@ toggleButton?.addEventListener('click', () => {
 });
 
 /* Reveal the toggle button only when the mouse moves */
+
 let toggleVisibilityTimeout;
 const revealToggle = () => {
   if (!toggleButton) return;
@@ -146,10 +147,24 @@ const revealToggle = () => {
   }, 2000);
 };
 
-document.addEventListener('mousemove', revealToggle);
-toggleButton?.addEventListener('mouseenter', () => {
+
+['mousemove', 'touchstart', 'touchmove'].forEach(eventName => {
+  document.addEventListener(eventName, revealToggle, { passive: true });
+});
+
+const keepToggleVisible = () => {
+  if (!toggleButton) return;
   document.body.classList.add('show-toggle');
   clearTimeout(toggleVisibilityTimeout);
-});
+};
+
+toggleButton?.addEventListener('mouseenter', keepToggleVisible);
 toggleButton?.addEventListener('mouseleave', revealToggle);
+
+toggleButton?.addEventListener('focus', () => document.body.classList.add('show-toggle'));
+toggleButton?.addEventListener('blur', () => document.body.classList.remove('show-toggle'));
+
+revealToggle();
+
+
 
