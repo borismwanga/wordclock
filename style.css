@@ -6,8 +6,25 @@
     --dark-mode-shadow: #f3f7faa0;
     --light-mode-bg: #e7e8e8;
     --light-mode-text: #c2c3c4;
-    --light-mode-highlight: #ffffff;
-    --light-mode-shadow: #f3f7fa;
+    --light-mode-highlight: #111111;
+    --light-mode-shadow: rgba(0, 0, 0, 0.35);
+    --toggle-bg: rgba(255, 255, 255, 0.15);
+    --toggle-text: #ffffff;
+    --toggle-shadow: rgba(0, 0, 0, 0.5);
+    --bg: var(--dark-mode-bg);
+    --text: var(--dark-mode-text);
+    --highlight: var(--dark-mode-highlight);
+    --shadow: var(--dark-mode-shadow);
+}
+
+[data-theme="light"]{
+    --bg: var(--light-mode-bg);
+    --text: var(--light-mode-text);
+    --highlight: var(--light-mode-highlight);
+    --shadow: var(--light-mode-shadow);
+    --toggle-bg: rgba(0, 0, 0, 0.15);
+    --toggle-text: #050505;
+    --toggle-shadow: rgba(0, 0, 0, 0.2);
 }
 *{
     box-sizing: border-box;
@@ -16,7 +33,7 @@
 }
 
 body{
-    background: var(--dark-mode-bg);
+    background: var(--bg);
     font-family: Monospace, sans-serif;
     height: 100vh;
     width: 100vw;
@@ -40,7 +57,7 @@ body{
     font-size: 2.604vw;
     letter-spacing: .8em;
     text-align: center;
-    color: var(--dark-mode-text);
+    color: var(--text);
     /* max-width: 29ch;  */
     /* word-wrap: break-word; */
     /* -webkit-text-stroke-width: 1px;
@@ -49,8 +66,8 @@ body{
 }
 .highlight {
     transition: all 3s;
-    color: var(--dark-mode-highlight); 
-    text-shadow: 0 0 5px var(--dark-mode-shadow);
+    color: var(--highlight); 
+    text-shadow: 0 0 5px var(--shadow);
     /* -webkit-text-stroke-color: rgba(255, 255, 255, 0.078); */
 
   }
@@ -85,18 +102,35 @@ body{
 }
 
   /*toggle mode button*/
-    /* .toggle-mode{
+    .toggle-mode{
         position: absolute;
         top: 1em;
         right: 1em;
-        background-color: var(--light-mode-bg);
-        color: var(--light-mode-text);
+        padding: .5em 1.25em;
+        font-size: .9rem;
+        border-radius: 999px;
         border: none;
-        padding: .5em;
-        border-radius: 5px;
+        background-color: var(--toggle-bg);
+        color: var(--toggle-text);
         cursor: pointer;
-        transition: all .3s;
-    } */
+        box-shadow: 0 10px 25px var(--toggle-shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity .3s ease, transform .3s ease;
+    }
+
+    body.show-toggle .toggle-mode{
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .toggle-mode:focus-visible,
+    .toggle-mode:hover{
+        filter: brightness(1.1);
+        outline: none;
+    }
     @media screen and (max-width: 768px) {
         #myText{
             margin-left: 15px;
